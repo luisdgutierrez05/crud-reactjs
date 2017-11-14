@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default class UserSearchBar extends React.Component {
-
   constructor(props) {
     super(props);
     this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
@@ -12,6 +11,8 @@ export default class UserSearchBar extends React.Component {
   }
 
   render() {
+    const filterText = this.props.filterText;
+
     return (
       <form className="form-inline">
         <fieldset className="form-group">
@@ -19,7 +20,7 @@ export default class UserSearchBar extends React.Component {
             type="text"
             className="form-control form-control-lg"
             placeholder="Search..."
-            value={this.props.filterText}
+            value={filterText}
             onChange={this.handleFilterTextChange}
           />
         </fieldset>

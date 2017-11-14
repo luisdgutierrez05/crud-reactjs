@@ -4,26 +4,8 @@ import UserTable from './UserTable';
 
 export default class UserIndex extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      filterText: "",
-      id: null,
-      firstName: "",
-      lastName: "",
-      birthDate: "",
-      email: "",
-      data: []
-    }
-
-    this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
-  }
-
-  handleFilterTextChange(filterText) {
-    this.setState({ filterText: filterText });
-  }
-
   render() {
+    const { users, filterText, isDirty } = this.props;
     return(
       <div className="mt-3">
         <nav className="navbar navbar-toggleable-md fixed-top">
@@ -31,20 +13,26 @@ export default class UserIndex extends React.Component {
             <h2 className="navbar-nav mr-auto">Users</h2>
             <form className="form-inline pull-right">
               <a href="#" className="btn btn-primary"
-                onClick={() => this.props.changeViewMode('create')}>
+                onClick={() => this.props.onChangeViewMode('create')}>
                   Create
               </a>
             </form>
           </div>
         </nav>
+
         <UserSearchBar
-          filterText={this.state.filterText}
-          onFilterTextChange={this.handleFilterTextChange}
+          filterText={filterText}
+          isDirty={isDirty}
+          onFilterTextChange={this.props.onFilterTextChange}
         />
+
         <div className="page-header" />
+
         <UserTable
-          users={this.state.users}
-          filterText={this.state.filterText}
+          users={users}
+          filterText={filterText}
+          onEditUser={this.props.onEditUser}
+          onDeleteUser={this.props.onDeleteUser}
         />
       </div>
     );

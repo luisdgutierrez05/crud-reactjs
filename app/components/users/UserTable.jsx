@@ -3,30 +3,48 @@ import UserRow from './UserRow';
 
 export default class UserTable extends React.Component {
 
-  // filterUser(user, filterText) {
-  //   if ((user.firstName.toLowerCase().indexOf(filterText.toLowerCase()) === -1) &&
-  //       (user.lastName.toLowerCase().indexOf(filterText.toLowerCase()) === -1) &&
-  //       (user.birthDate.indexOf(filterText) === -1)) {
-  //     return;
-  //   }
-  // }
+  renderRows() {
+    const {
+      filterText,
+      users,
+    } = this.props;
 
-  render() {
-    const filterText = this.props.filterText;
-    const rows = [];
-
-    if(this.props.users !== undefined) {
-      this.props.users.forEach((user) => {
-        // this.filterUser(user, filterText);
-        if ((user.firstName.toLowerCase().indexOf(filterText.toLowerCase()) === -1) &&
-            (user.lastName.toLowerCase().indexOf(filterText.toLowerCase()) === -1) &&
-            (user.birthDate.indexOf(filterText) === -1)) {
-          return;
-        }
-        rows.push(<UserRow user={user} key={user.id} />);
-      });
+    if (users.length === 0) {
+      return(<tr key={0}><td colSpan={6} align={"center"}>No users</td></tr>);
     }
 
+    return users
+      .filter( user => {
+        if (filterText === "") {
+          return true;
+        } else {
+          if ((user.firstName.toLowerCase().indexOf(filterText.toLowerCase()) === -1) &&
+              (user.lastName.toLowerCase().indexOf(filterText.toLowerCase()) === -1) &&
+              (user.birthDate.indexOf(filterText) === -1)) {
+            return;
+          }
+        }
+      })
+      .map((user) => {
+        const {
+          onEditUser,
+          onDeleteUser,
+        } = this.props;
+
+        const { id } = user;
+
+        return (
+          <UserRow
+            user={user}
+            key={id}
+            onEditUser={onEditUser}
+            onDeleteUser={onDeleteUser}
+          />
+        )
+      });
+  }
+
+  render() {
     return(
       <table className="table table-striped">
         <thead className="thead-inverse">
@@ -39,7 +57,7 @@ export default class UserTable extends React.Component {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>{rows}</tbody>
+        <tbody>{this.renderRows()}</tbody>
       </table>
     )
   }
