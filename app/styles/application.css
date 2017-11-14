@@ -1,0 +1,32 @@
+
+.text-align-center{
+  text-align:center;
+}
+
+.margin-zero{
+  margin:0;
+}
+
+.overflow-hidden{
+  overflow:hidden;
+}
+
+.margin-bottom-1em{
+  margin-bottom:1em;
+}
+
+.m-r-1em{
+  margin-right:1em;
+}
+
+.move-right{
+  float: right !important;
+}
+
+.move-left{
+  float: left !important;
+}
+
+.form-card-preview {
+  margin-left: 20px;
+}
