@@ -7,9 +7,10 @@ export default class MainContainer extends React.Component {
   render() {
     const {
       users,
-      onFilterTextChange
+      onFilterTextChange,
+      filterText
     } = this.props;
 
-    return (<UserIndex users={users} filterText="" onFilterTextChange={onFilterTextChange}/>);
+    return (<UserIndex users={users} filterText={filterText} onFilterTextChange={onFilterTextChange}/>);
 }
 }

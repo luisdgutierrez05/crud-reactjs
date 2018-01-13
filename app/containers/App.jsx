@@ -71,7 +71,7 @@ export default class App extends React.Component {
 
     return (<Switch>
       <Route exact path="/"
-        render={ props => <MainContainer {...props} users={users} onFilterTextChange={this.handleFilterTextChange}/>}
+        render={ props => <MainContainer {...props} users={users} filterText={filterText} onFilterTextChange={this.updateFilterTextChange}/>}
       />
       <Route path="/about" component={AboutUs}/>
       <Route path="/users/new"

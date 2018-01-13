@@ -17,13 +17,15 @@ export default class UserTable extends React.Component {
       .filter( user => {
         if (filterText === "") {
           return true;
-        } else {
-          if ((user.firstName.toLowerCase().indexOf(filterText.toLowerCase()) === -1) &&
-              (user.lastName.toLowerCase().indexOf(filterText.toLowerCase()) === -1) &&
-              (user.birthDate.indexOf(filterText) === -1)) {
-            return;
-          }
         }
+
+        if ((user.firstName.toLowerCase().indexOf(filterText.toLowerCase()) === -1) &&
+            (user.lastName.toLowerCase().indexOf(filterText.toLowerCase()) === -1) &&
+              (user.birthDate.indexOf(filterText) === -1)) {
+          return;
+        }
+
+        return true;
       })
       .map((user) => {
         const {
