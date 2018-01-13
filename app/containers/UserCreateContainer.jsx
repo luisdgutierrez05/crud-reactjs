@@ -17,7 +17,7 @@ export default class UserCreateContainer extends React.Component {
   handleUserSubmit = (event) => {
     event.preventDefault();
 
-    this.props.onCreateUser(this.state);
+    this.props.onCreateUser(this.state, this.props.history);
     this.clearForm();
   }
 

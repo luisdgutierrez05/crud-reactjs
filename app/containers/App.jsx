@@ -3,6 +3,7 @@ import MainContainer from 'containers/MainContainer';
 import AboutUs from 'components/AboutUs';
 import UserCreateContainer from 'containers/UserCreateContainer';
 import { Route, Switch } from 'react-router-dom';
+import { createBrowserHistory as createHistory } from "history";
 
 export default class App extends React.Component {
   state = {
@@ -42,11 +43,12 @@ export default class App extends React.Component {
     this.setState({ filterText: filterText });
   }
 
-  handleCreateUser = (user) => {
+  handleCreateUser = (user, history) => {
     var index = this.state.users.length;
     user["id"] = (user["id"] == "") ? (index + 1) : (parseInt(user["id"]) + 1);
     this.state.users.push(user);
     this.setState({users: this.state.users});
+    history.push('/');
   }
 
   handleEditUser = (userId) => {
