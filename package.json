@@ -14,7 +14,8 @@
     "jquery": "^1.9.1",
     "popper.js": "^1.12.7",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "auto-reload-brunch": "^2",

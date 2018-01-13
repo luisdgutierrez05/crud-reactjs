@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import UserCardPreview from './UserCardPreview';
+import { Link } from 'react-router-dom';
 
 export default class UserForm extends React.Component {
 
@@ -47,10 +48,9 @@ export default class UserForm extends React.Component {
                 <div className="form-group row">
                   <div className="offset-sm-11 col-sm-11">
                     <button type="submit" className="btn btn-primary pull-right">Create</button>
-                    <a href="#" className="btn btn-default pull-right m-r-1em"
-                      onClick={() => this.props.onChangeViewMode('index')}>
+                    <Link to="/" className="btn btn-default pull-right m-r-1em">
                         Cancel
-                    </a>
+                    </Link>
                   </div>
                 </div>
 

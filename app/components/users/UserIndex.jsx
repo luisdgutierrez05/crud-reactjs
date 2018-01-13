@@ -1,6 +1,7 @@
 import React from 'react';
 import UserSearchBar from './UserSearchBar';
 import UserTable from './UserTable';
+import { Link } from 'react-router-dom';
 
 export default class UserIndex extends React.Component {
 
@@ -12,10 +13,7 @@ export default class UserIndex extends React.Component {
           <div className="collapse navbar-collapse">
             <h2 className="navbar-nav mr-auto">Users</h2>
             <form className="form-inline pull-right">
-              <a href="#" className="btn btn-primary"
-                onClick={() => this.props.onChangeViewMode('create')}>
-                  Create
-              </a>
+              <Link to="/users/new" className="btn btn-primary">Create</Link>
             </form>
           </div>
         </nav>
